@@ -1,26 +1,215 @@
-@import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================
+   LEADFLOW CRM — NEBULA DESIGN SYSTEM
+   ========================================== */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Typography */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-geist-sans);
+
+  /* Main colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Chart colors */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(
+    --sidebar-primary-foreground
+  );
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(
+    --sidebar-accent-foreground
+  );
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Border radius */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ==========================================
+   NEBULA — SINGLE LIGHT THEME
+   ========================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Main background */
+  --background: #f8f7fc;
+  --foreground: #17112f;
+
+  /* Cards */
+  --card: #ffffff;
+  --card-foreground: #17112f;
+
+  /* Popovers and dropdowns */
+  --popover: #ffffff;
+  --popover-foreground: #17112f;
+
+  /* Brand purple */
+  --primary: #7546eb;
+  --primary-foreground: #ffffff;
+
+  /* Secondary */
+  --secondary: #f0ebff;
+  --secondary-foreground: #17112f;
+
+  /* Muted */
+  --muted: #f3f0f9;
+  --muted-foreground: #64748b;
+
+  /* Accent */
+  --accent: #f0ebff;
+  --accent-foreground: #7546eb;
+
+  /* Error */
+  --destructive: #dc2626;
+
+  /* Borders and inputs */
+  --border: #eae7f2;
+  --input: #eae7f2;
+  --ring: #7546eb;
+
+  /* Charts */
+  --chart-1: #7546eb;
+  --chart-2: #d946a8;
+  --chart-3: #21bfa6;
+  --chart-4: #3b82f6;
+  --chart-5: #f59e0b;
+
+  /* Border radius */
+  --radius: 0.75rem;
+
+  /* Sidebar */
+  --sidebar: #17112f;
+  --sidebar-foreground: #ffffff;
+
+  --sidebar-primary: #7546eb;
+  --sidebar-primary-foreground: #ffffff;
+
+  --sidebar-accent: #2a2048;
+  --sidebar-accent-foreground: #ffffff;
+
+  --sidebar-border: #352a51;
+  --sidebar-ring: #a78bfa;
+
+  /* Custom Nebula variables */
+  --nebula-primary: #7546eb;
+  --nebula-primary-hover: #6335d5;
+  --nebula-sidebar: #17112f;
+  --nebula-accent: #d946a8;
+  --nebula-background: #f8f7fc;
+}
+
+/* ==========================================
+   BASE STYLES
+   ========================================== */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ==========================================
+   CUSTOM NEBULA UTILITIES
+   ========================================== */
+
+@layer utilities {
+  .nebula-gradient {
+    background: linear-gradient(
+      135deg,
+      #7546eb 0%,
+      #a855f7 55%,
+      #d946a8 100%
+    );
+  }
+
+  .nebula-sidebar-gradient {
+    background: linear-gradient(
+      160deg,
+      #17112f 0%,
+      #241344 55%,
+      #35144b 100%
+    );
+  }
+
+  .nebula-text-gradient {
+    background: linear-gradient(
+      90deg,
+      #7546eb 0%,
+      #d946a8 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .nebula-card {
+    background: #ffffff;
+    border: 1px solid #eae7f2;
+    border-radius: 1rem;
+    box-shadow: 0 4px 18px rgb(23 17 47 / 4%);
+  }
 }
